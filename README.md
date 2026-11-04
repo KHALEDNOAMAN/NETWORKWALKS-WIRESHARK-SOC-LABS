@@ -2,158 +2,167 @@
 
 ## Overview
 
-This repository documents my practical work completing six Security Operations Centre (SOC) labs using Wireshark as part of the Networkwalks Cybersecurity Internship.
+This repository documents six hands-on Security Operations Centre (SOC) investigation labs completed using Wireshark as part of my Networkwalks Cybersecurity Internship.
 
-The exercises focused on analysing network traffic, investigating suspicious activity, identifying potential attackers, inspecting TCP conversations, detecting exposed credentials, and investigating suspicious VoIP calls.
+The exercises focused on analysing captured network traffic, identifying suspicious IP addresses, reconstructing TCP conversations, investigating exposed credentials, detecting brute-force activity, and analysing VoIP communication.
 
-## Tools Used
+## Tools and Technologies
 
 - Wireshark
-- Linux
+- Ubuntu Linux
 - TCP/IP
 - HTTP
 - FTP
 - SIP
 - RTP
-- Network packet analysis
-
-## Labs Completed
-
-### 1. Identify the Attacker's IP
-
-**Objective:** Identify a suspicious IP address responsible for unusual network activity.
-
-**Activities:**
-
-- Analysed captured network traffic.
-- Inspected source and destination IP addresses.
-- Used Wireshark filters to narrow down suspicious packets.
-- Investigated traffic patterns to identify the suspected attacker.
-
-**Key Learning:** Understanding how packet analysis can help identify suspicious hosts and investigate network attacks.
-
-**Evidence:** `screenshots/01-attacker-ip/`
 
 ---
 
-### 2. Follow TCP Stream 1
+## LAB 01: Identify the Attacker's IP
 
-**Objective:** Reconstruct a TCP conversation and inspect the information exchanged between two hosts.
+### Objective
+Investigate captured network traffic to identify a suspicious IP address responsible for unusual activity.
 
-**Activities:**
+### Investigation
+- Examined source and destination IP addresses.
+- Analysed packet communication patterns.
+- Used Wireshark filters to isolate suspicious traffic.
+- Investigated traffic sources to identify the suspected attacker.
 
-- Applied TCP display filters.
-- Used Follow TCP Stream to reconstruct the conversation.
-- Examined client-server communication.
-- Inspected the transmitted data.
+### Key Learning
+Network packet analysis helps security analysts identify suspicious hosts and investigate potential network attacks.
 
-**Key Learning:** TCP stream reconstruction helps analysts understand application-level communication and identify potentially exposed information.
+### Evidence
 
-**Evidence:** `screenshots/02-follow-tcp-stream/`
-
----
-
-### 3. Follow TCP Stream – Part 2
-
-**Objective:** Investigate another network capture and identify information hidden within TCP communication.
-
-**Activities:**
-
-- Examined TCP conversations.
-- Reconstructed communication between hosts.
-- Inspected transmitted content.
-- Investigated information that could be exposed through network traffic.
-
-**Key Learning:** Packet captures can contain valuable evidence that is not immediately visible in the packet list.
-
-**Evidence:** `screenshots/03-follow-tcp-stream-part-2/`
+![Attacker IP Investigation](screenshots/01-attacker-ip/lab1.png)
 
 ---
 
-### 4. HTTP Plain Text Credentials
+## LAB 02: Follow TCP Stream – Part 1
 
-**Objective:** Investigate how credentials can be exposed when transmitted over unencrypted HTTP.
+### Objective
+Reconstruct a TCP conversation to understand the information exchanged between communicating hosts.
 
-**Activities:**
+### Investigation
+- Inspected TCP packets.
+- Used the Follow TCP Stream feature.
+- Reconstructed client-server communication.
+- Examined transmitted application data.
 
-- Filtered HTTP requests.
+### Key Learning
+TCP stream reconstruction allows analysts to inspect conversations and discover information that may not be immediately visible in individual packets.
+
+### Evidence
+
+![TCP Stream Investigation](screenshots/02-follow-tcp-stream/lab2.png)
+
+---
+
+## LAB 03: Follow TCP Stream – Part 2
+
+### Objective
+Continue investigating TCP communication and identify information exposed through captured network traffic.
+
+### Investigation
+- Analysed TCP conversations.
+- Followed communication between hosts.
+- Examined transmitted content.
+- Investigated information contained within the reconstructed stream.
+
+### Key Learning
+Packet captures provide valuable evidence during network investigations and can reveal sensitive information transmitted between systems.
+
+### Evidence
+
+![TCP Stream Investigation Part 2](screenshots/03-follow-tcp-stream-part-2/lab3.png)
+
+---
+
+## LAB 04: HTTP Plain Text Credentials
+
+### Objective
+Investigate how sensitive login information can be exposed when transmitted over unencrypted HTTP.
+
+### Investigation
+- Applied HTTP display filters.
 - Inspected HTTP POST requests.
 - Examined request data.
-- Investigated credentials transmitted without transport encryption.
+- Investigated how credentials can appear in unencrypted communication.
 
-**Key Learning:** HTTP does not encrypt transmitted information. HTTPS using TLS helps protect sensitive information while it is in transit.
+### Key Learning
+HTTP does not encrypt transmitted information. HTTPS, which uses TLS, protects sensitive information while it travels across the network.
 
-**Evidence:** `screenshots/04-http-credentials/`
+### Evidence
 
----
-
-### 5. Catch the Brute Force Attacker
-
-**Objective:** Investigate repeated login attempts and identify the suspected source of a brute-force attack.
-
-**Activities:**
-
-- Analysed authentication-related traffic.
-- Inspected repeated login attempts.
-- Examined FTP commands and responses.
-- Investigated the source IP associated with suspicious login activity.
-
-**Key Learning:** Repeated authentication attempts can indicate password-guessing activity. Network monitoring and account protection mechanisms help detect and prevent these attacks.
-
-**Evidence:** `screenshots/05-brute-force-attacker/`
+![HTTP Credentials Investigation](screenshots/04-http-credentials/lab4.png)
 
 ---
 
-### 6. Catch the Call Scammer
+## LAB 05: Catch the Brute Force Attacker
 
-**Objective:** Investigate VoIP traffic and analyse a suspicious phone conversation.
+### Objective
+Investigate repeated authentication attempts and identify suspicious activity associated with a potential brute-force attack.
 
-**Activities:**
+### Investigation
+- Examined authentication-related traffic.
+- Investigated repeated login attempts.
+- Inspected FTP commands and server responses.
+- Analysed source IP addresses associated with suspicious requests.
 
-- Examined SIP signalling.
-- Identified call-related information.
-- Investigated RTP voice traffic.
-- Identified the audio codec.
-- Explored the security risks of unencrypted voice communication.
+### Key Learning
+Repeated login attempts can indicate password-guessing attacks. Monitoring authentication traffic helps security analysts detect suspicious login behaviour.
 
-**Key Learning:** Unencrypted RTP traffic can expose voice conversations to anyone with access to the captured packets. SRTP helps protect voice traffic through encryption.
+### Evidence
 
-**Evidence:** `screenshots/06-call-scammer/`
+![Brute Force Investigation](screenshots/05-brute-force-attacker/lab5.png)
 
 ---
 
-## Skills Practised
+## LAB 06: Catch the Call Scammer
+
+### Objective
+Investigate VoIP communication by analysing SIP signalling and RTP voice traffic.
+
+### Investigation
+- Examined SIP signalling messages.
+- Investigated call setup information.
+- Analysed RTP packets.
+- Identified the audio codec used in the communication.
+- Explored the security risks of unencrypted voice traffic.
+
+### Key Learning
+Unencrypted RTP traffic can expose private voice conversations. Secure Real-time Transport Protocol (SRTP) provides encryption to protect voice communication.
+
+### Evidence
+
+![VoIP Investigation](screenshots/06-call-scammer/lab6.png)
+
+---
+
+## Skills Developed
 
 - Network traffic analysis
 - Packet inspection
 - TCP stream reconstruction
 - IP address investigation
-- HTTP request analysis
+- HTTP security analysis
 - Authentication traffic investigation
 - Brute-force attack detection
 - SIP and RTP analysis
 - VoIP security fundamentals
-- Wireshark display filters
-
-## Security Lessons
-
-These exercises demonstrated several important network security risks:
-
-1. Unencrypted HTTP can expose sensitive information.
-2. Repeated login attempts can indicate brute-force attacks.
-3. TCP conversations can reveal information exchanged between hosts.
-4. Unencrypted RTP can expose private voice conversations.
-5. Network traffic analysis helps security analysts investigate suspicious activity.
+- Wireshark display filtering
 
 ## Conclusion
 
-Completing these six labs strengthened my practical understanding of network traffic analysis and introductory SOC investigation techniques.
+Completing these six practical labs strengthened my understanding of network traffic analysis and introductory SOC investigation techniques.
 
-This repository serves as evidence of my hands-on learning and continued development in networking and cybersecurity.
+The exercises provided practical exposure to identifying suspicious network behaviour, investigating communication protocols, and understanding how sensitive information can be exposed through insecure network communication.
 
-**Programme:** Networkwalks Cybersecurity Internship
-**Module:** Wireshark Project Module (Extra)
-**Platform:** Ubuntu Linux
+This project represents part of my continuous hands-on development in networking and cybersecurity.
+
+**Programme:** Networkwalks Cybersecurity Internship  
+**Module:** Wireshark SOC Labs  
+**Platform:** Ubuntu Linux  
 **Primary Tool:** Wireshark
 
-*All activities were conducted in authorised training lab environments.*
+*All investigations were performed in authorised training lab environments.*
